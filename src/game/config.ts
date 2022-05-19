@@ -3,8 +3,8 @@ import { Main } from "./scene";
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   scene: [Main],
-  width: 420,
-  height: 860,
+  width: 400,
+  height: 733,
   parent: "phaser-app-box",
 
   dom: {
@@ -14,7 +14,5 @@ export const config: Phaser.Types.Core.GameConfig = {
     disableWebAudio: true,
   },
   disableContextMenu: false,
-  backgroundColor: "#150a30",
-  // backgroundColor: "#0090c9",
-  transparent: false,
+  transparent: true,
 };

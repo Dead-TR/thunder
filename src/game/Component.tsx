@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { config } from "./config";
+import css from "./style.module.scss";
 
 const Component = () => {
   const phaserApp = useRef<Phaser.Game | null>(null);
@@ -14,7 +15,7 @@ const Component = () => {
     };
   }, []);
 
-  return <div id="phaser-app-box" />;
+  return <div id="phaser-app-box" className={css.appWrapper} />;
 };
 
 export default Component;
