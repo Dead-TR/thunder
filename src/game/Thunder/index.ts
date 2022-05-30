@@ -8,24 +8,46 @@ export class Thunder {
 
   constructor(scene: Scene) {
     this.scene = scene;
+
     this.playersData = {
       enemy: {
         counts: {
           armor: new Text(scene, {
             value: 0,
-            position: [200, 390],
+            position: {
+              left: 10,
+              top: "43",
+
+              origin: [0, 0.5],
+            },
           }),
           cardsAmount: new Text(scene, {
             value: 0,
-            position: [370, 360],
+            position: {
+              top: "37",
+              left: "50",
+
+              origin: 0.5,
+            },
           }),
           hp: new Text(scene, {
             value: 0,
-            position: [200, 330],
+
+            position: {
+              right: 10,
+              top: "43",
+
+              origin: [1, 0.5],
+            },
           }),
           parry: new Text(scene, {
             value: 0,
-            position: [20, 360],
+            position: {
+              top: "48",
+              left: "50",
+
+              origin: 0.5,
+            },
           }),
         },
       },
@@ -33,19 +55,39 @@ export class Thunder {
         counts: {
           armor: new Text(scene, {
             value: 0,
-            position: [200, 285],
+            position: {
+              left: 10,
+              bottom: "41",
+
+              origin: [0, 0.5],
+            },
           }),
           cardsAmount: new Text(scene, {
             value: 0,
-            position: [370, 255],
+            position: {
+              left: "50",
+              bottom: "46",
+
+              origin: 0.5,
+            },
           }),
           hp: new Text(scene, {
             value: 0,
-            position: [200, 225],
+            position: {
+              right: 10,
+              bottom: "41",
+
+              origin: [1, 0.5],
+            },
           }),
           parry: new Text(scene, {
             value: 0,
-            position: [20, 255],
+            position: {
+              left: "50",
+              bottom: "35",
+
+              origin: 0.5,
+            },
           }),
         },
       },

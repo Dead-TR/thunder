@@ -1,10 +1,10 @@
+import { getGameSizes } from "utils";
 import { Main } from "./scene";
 
 export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   scene: [Main],
-  width: 400,
-  height: 733,
+  ...getGameSizes(),
   parent: "phaser-app-box",
 
   dom: {

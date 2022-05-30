@@ -9,8 +9,8 @@ export class Main extends Scene {
     this.thunder = new Thunder(this);
 
     // this.input.on("pointerdown", () => {
-    //   this.thunder?.playersData.user.counts.hp.update(
-    //     (Number(this.thunder?.playersData.user.counts.hp.value) || 0) + 1
+    //   this.thunder?.playersData.user.counts.cardsAmount.update(
+    //     (Number(this.thunder?.playersData.user.counts.cardsAmount.value) || 0) + 10
     //   );
     // });
   }

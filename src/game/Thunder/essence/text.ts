@@ -1,4 +1,6 @@
 import { Scene } from "phaser";
+import { createCoordinatesFromPosition } from "utils";
+import { Position } from "../types";
 
 export class Text {
   scene: Scene;
@@ -9,12 +11,17 @@ export class Text {
     scene: Scene,
     config?: {
       value?: string | number;
-      position?: [number, number];
+      position?: Position;
       style?: Phaser.Types.GameObjects.Text.TextStyle;
     }
   ) {
     const preparedConfig = {
-      position: [...(config?.position || [0, 10])],
+      position: {
+        ...(config?.position || {
+          top: 10,
+          left: 10,
+        }),
+      },
       value: config?.value?.toString() || "",
       style: {
         color: "black",
@@ -24,7 +31,17 @@ export class Text {
     };
     const { position, value, style } = preparedConfig;
     this.scene = scene;
-    this.text = scene.add.text(position[0], position[1], `${value}`, style);
+
+    const coordinates = createCoordinatesFromPosition(position);
+    this.text = scene.add.text(coordinates.x, coordinates.y, `${value}`, style);
+
+    if (position.origin) {
+      const origin =
+        typeof position.origin === "number"
+          ? [position.origin]
+          : position.origin;
+      this.text.setOrigin(origin[0], origin[1]);
+    }
   }
 
   update(value: string | number) {

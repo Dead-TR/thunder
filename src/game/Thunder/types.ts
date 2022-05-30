@@ -12,3 +12,21 @@ export interface PlayersData {
   user: Player;
   enemy: Player;
 }
+
+export interface PositionAnchorObject {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+
+  [key: string]: any;
+}
+export interface Position {
+  top?: number | string;
+  bottom?: number | string;
+  left?: number | string;
+  right?: number | string;
+
+  anchor?: PositionAnchorObject;
+  origin?: number | [number] | [number, number];
+}
