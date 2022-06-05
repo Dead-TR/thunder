@@ -102,12 +102,13 @@ export class Thunder {
     const card = new Card(
       scene,
       {
-        icon: "",
+        icon: "_3",
         type: "armor",
+        value: "15",
       },
       {
-        top: 0,
-        left: 0,
+        top: "30",
+        left: "40",
         origin: 0,
       }
     );
