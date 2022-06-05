@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-import { Text } from "./essence";
+import { Text, Card } from "./essence";
 import { PlayersData } from "./types";
 
 export class Thunder {
@@ -99,6 +99,17 @@ export class Thunder {
       },
     };
 
-    console.log(this.playersData);
+    const card = new Card(
+      scene,
+      {
+        icon: "",
+        type: "armor",
+      },
+      {
+        top: 0,
+        left: 0,
+        origin: 0,
+      }
+    );
   }
 }
