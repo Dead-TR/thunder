@@ -9,14 +9,20 @@ export class Thunder {
   constructor(scene: Scene) {
     this.scene = scene;
 
+    const positionValues = {
+      enemyTop: "31",
+      side: 10,
+      playerTop: "44",
+    };
+
     this.playersData = {
       enemy: {
         counts: {
           armor: new Text(scene, {
             value: 0,
             position: {
-              left: 10,
-              top: "43",
+              left: positionValues.side,
+              top: positionValues.enemyTop,
 
               origin: [0, 0.5],
             },
@@ -24,7 +30,7 @@ export class Thunder {
           cardsAmount: new Text(scene, {
             value: 0,
             position: {
-              top: "37",
+              top: "27",
               left: "50",
 
               origin: 0.5,
@@ -34,8 +40,8 @@ export class Thunder {
             value: 0,
 
             position: {
-              right: 10,
-              top: "43",
+              right: positionValues.side,
+              top: positionValues.enemyTop,
 
               origin: [1, 0.5],
             },
@@ -43,7 +49,7 @@ export class Thunder {
           parry: new Text(scene, {
             value: 0,
             position: {
-              top: "48",
+              top: "35",
               left: "50",
 
               origin: 0.5,
@@ -56,8 +62,8 @@ export class Thunder {
           armor: new Text(scene, {
             value: 0,
             position: {
-              left: 10,
-              bottom: "41",
+              left: positionValues.side,
+              top: positionValues.playerTop,
 
               origin: [0, 0.5],
             },
@@ -66,7 +72,7 @@ export class Thunder {
             value: 0,
             position: {
               left: "50",
-              bottom: "46",
+              top: "40",
 
               origin: 0.5,
             },
@@ -74,8 +80,8 @@ export class Thunder {
           hp: new Text(scene, {
             value: 0,
             position: {
-              right: 10,
-              bottom: "41",
+              right: positionValues.side,
+              top: positionValues.playerTop,
 
               origin: [1, 0.5],
             },
@@ -84,7 +90,7 @@ export class Thunder {
             value: 0,
             position: {
               left: "50",
-              bottom: "35",
+              top: "48",
 
               origin: 0.5,
             },
