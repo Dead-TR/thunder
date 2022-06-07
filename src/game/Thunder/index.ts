@@ -104,13 +104,13 @@ export class Thunder {
       {
         icon: "_3",
         type: "armor",
-        value: "15",
+        value: "1500",
       },
       {
-        top: "30",
-        left: "40",
-        origin: 0,
-      }
+        top: "10",
+        left: "7",
+
+      },
     );
   }
 }
