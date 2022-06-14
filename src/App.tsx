@@ -1,9 +1,10 @@
-import { Game } from "components";
-import css from "./style.module.scss";
+import { Wrapper } from "TableComponents";
+import { GameProvider } from "providers";
 
 export const App = () => {
-  return <div className={css.root}>
-    <Game />
-  </div>;
-}
-
+  return (
+    <GameProvider>
+      <Wrapper />
+    </GameProvider>
+  );
+};

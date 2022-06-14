@@ -1,0 +1,20 @@
+.side {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.title,
+.value {
+  font-size: 1.6rem;
+  margin: 0;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.title {
+  margin-right: 3px;
+}
+.value {
+}
