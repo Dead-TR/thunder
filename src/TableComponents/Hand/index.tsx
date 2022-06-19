@@ -1,7 +1,9 @@
-import React from 'react'
+import { Card } from "ItemComponents";
 
 export const Hand = () => {
   return (
-    <div>Hand</div>
-  )
-}
+    <div>
+      <Card />
+    </div>
+  );
+};
