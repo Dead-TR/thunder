@@ -1,7 +1,16 @@
+import hit from "../assets/icons/hit.png";
+import armor from "../assets/icons/armor.png";
+import clean from "../assets/icons/clean.png";
+import parry from "../assets/icons/parry.png";
+import treat from "../assets/icons/treat.png";
+import hand from "../assets/icons/hend.png";
+import reuse from "../assets/icons/reuse.png";
+import steal from "../assets/icons/steal.png";
+import { CardConfig } from "../types";
 
-export const cardList = {
+export const cardList: Record<string, CardConfig> = {
   attack_1: {
-    icon: "_1",
+    icon: hit,
     type: "atack",
     value: 1,
     description: "Проста атака. Наносить одиницю шкоди кожного раунду",
@@ -10,7 +19,7 @@ export const cardList = {
   },
 
   armor_1: {
-    icon: "_1",
+    icon: armor,
     type: "armor",
     value: 5,
     description: "Додає 5 броні, після використання",
@@ -19,7 +28,7 @@ export const cardList = {
   },
 
   clear_round: {
-    icon: "_1",
+    icon: clean,
     type: "special",
     usage: "once",
     name: "Очисти",
@@ -27,7 +36,7 @@ export const cardList = {
   },
 
   parry_1: {
-    icon: "_1",
+    icon: parry,
     type: "parry",
     usage: "round",
     value: 5,
@@ -36,16 +45,16 @@ export const cardList = {
   },
 
   treat_1: {
-    icon: "_1",
+    icon: treat,
     type: "treat",
     usage: "once",
-    value: "10",
+    value: 10,
     name: "Ліки",
     description: "Відновлює 10 одиниць здоров'я",
   },
 
   special_hand_1: {
-    icon: "_1",
+    icon: hand,
     type: "special",
     usage: "once",
     value: 2,
@@ -53,7 +62,7 @@ export const cardList = {
     description: "Збільшує число карт у руці на 2",
   },
   special_reuse: {
-    icon: "_1",
+    icon: reuse,
     type: "special",
     usage: "once",
     value: 1,
@@ -61,7 +70,7 @@ export const cardList = {
     description: "Забрати випадкову карту з відбою собі в руку",
   },
   special_steal: {
-    icon: "_1",
+    icon: steal,
     type: "special",
     usage: "once",
     name: "Вкрасти",
