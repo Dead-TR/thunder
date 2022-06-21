@@ -1,10 +1,20 @@
+@import "/src/sass/index";
+
+.scaleWrapper {
+  transform-origin: top left;
+}
+
 .root {
   position: relative;
-  width: fit-content;
+  min-width: $cardWidth;
+  height: $cardHeight;
   overflow: hidden;
 }
 
 .backgroundImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .descriptionBlock {
@@ -45,6 +55,7 @@
   left: 0;
 }
 .icon {
+  width: 80%;
 }
 
 .valueWrapper {

@@ -1,0 +1,14 @@
+@import "/src/sass/index";
+
+.root {
+  display: flex;
+  justify-content: center;
+  
+  max-width: 100vw;
+  height: 100%;
+  overflow: auto;
+
+  & > * {
+    margin: 0 2px;
+  }
+}

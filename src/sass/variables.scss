@@ -1,0 +1,7 @@
+$cardWidth: 200px;
+$cardHeight: 400px;
+
+:export {
+  #{"cardWidth"}: $cardWidth;
+  #{"cardHeight"}: $cardHeight;
+}

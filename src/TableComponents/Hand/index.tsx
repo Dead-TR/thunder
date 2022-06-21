@@ -1,16 +1,21 @@
-import { Card } from "ItemComponents";
+import { CardRow } from "TableComponents/CardRow";
+import css from "./style.module.scss";
+
+const cardsInHand = [
+  "attack_1",
+  "armor_1",
+  "clear_round",
+  "parry_1",
+  "treat_1",
+  "special_hand_1",
+  "special_reuse",
+  "special_steal",
+];
 
 export const Hand = () => {
   return (
-    <div>
-      <Card configKey="attack_1" />
-      <Card configKey="armor_1" />
-      <Card configKey="clear_round" />
-      <Card configKey="parry_1" />
-      <Card configKey="treat_1" />
-      <Card configKey="special_hand_1" />
-      <Card configKey="special_reuse" />
-      <Card configKey="special_steal" />
+    <div className={css.hand}>
+      <CardRow cardList={cardsInHand} />
     </div>
   );
 };
