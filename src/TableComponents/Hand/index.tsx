@@ -13,6 +13,7 @@ const cardsInHand = [
 ];
 
 export const Hand = () => {
+
   return (
     <div className={css.hand}>
       <CardRow cardList={cardsInHand} />

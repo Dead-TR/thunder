@@ -1,4 +1,4 @@
-import { CSSProperties, FC } from "react";
+import { CSSProperties, DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 import { cardList } from "./config";
 import css from "./style.module.scss";
@@ -6,6 +6,7 @@ import css from "./style.module.scss";
 import backgroundUrl from "./assets/front.png";
 import descriptionUrl from "./assets/textWrapper.png";
 import { typesIcon } from "./assets/types";
+import clsx from "clsx";
 
 export * from "./config";
 
@@ -14,6 +15,10 @@ const cardWidth = parseInt(css.cardWidth);
 
 interface Props {
   configKey: string;
+
+  className?: string;
+  onAnimaitonEnd?: () => void;
+
   scale?:
     | number
     | {
@@ -22,7 +27,12 @@ interface Props {
       };
 }
 
-export const Card: FC<Props> = ({ configKey, scale }) => {
+export const Card: FC<Props> = ({
+  configKey,
+  scale,
+  className,
+  onAnimaitonEnd,
+}) => {
   const cardData = cardList[configKey];
 
   if (!cardData) {
@@ -51,8 +61,10 @@ export const Card: FC<Props> = ({ configKey, scale }) => {
   };
 
   return (
-    <div className={css.scaleWrapper} style={getStyle()}>
-      <div className={css.root}>
+    <div className={clsx(css.scaleWrapper)} style={{ ...getStyle() }}>
+      <div
+        className={clsx(css.root, className)}
+        onAnimationEnd={() => onAnimaitonEnd && onAnimaitonEnd()}>
         <img src={backgroundUrl} className={css.backgroundImg} />
 
         <div className={css.descriptionBlock}>

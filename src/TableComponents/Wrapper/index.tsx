@@ -51,4 +51,3 @@ export const Wrapper = () => {
   );
 };
 
-// const margin = parseInt(css.marginTop);

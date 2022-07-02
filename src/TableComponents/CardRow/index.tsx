@@ -1,8 +1,9 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 
 import { useResizeObserver } from "general/hooks";
 import { Card } from "ItemComponents";
 import css from "./style.module.scss";
+import clsx from "clsx";
 
 interface Props {
   cardList: string[];
@@ -11,6 +12,27 @@ interface Props {
 export const CardRow: FC<Props> = ({ cardList }) => {
   const [cardsScale, setCardsScale] = useState(0);
   const [root, setRoot] = useState<HTMLDivElement | null>(null);
+  const [cardsOnDysplay, setCardsOnDysplay] = useState<
+    {
+      card: string;
+      isAnimated: boolean;
+    }[]
+  >(
+    cardList[0]
+      ? [
+          {
+            card: cardList[0],
+            isAnimated: false,
+          },
+        ]
+      : [],
+  );
+
+  console.log("CardRow", cardsOnDysplay);
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   useResizeObserver(
     ([{ target }]) => {
@@ -32,7 +54,7 @@ export const CardRow: FC<Props> = ({ cardList }) => {
 
   return (
     <div className={css.root} ref={(node) => setRoot(node)}>
-      {cardList.map((value, i) => (
+      {/* {cardList.map((value, i) => (
         <Fragment key={`handCard#${value}_${i}`}>
           <Card
             configKey={value}
@@ -41,7 +63,34 @@ export const CardRow: FC<Props> = ({ cardList }) => {
             }}
           />
         </Fragment>
-      ))}
+      ))} */}
+      {cardsOnDysplay.map(({ card, isAnimated }, index) => {
+        return (
+          <Fragment key={`handCard#${card}_${index}`}>
+            <Card
+              configKey={card}
+              scale={{ height: cardsScale }}
+              className={clsx(!isAnimated && css.slide)}
+              onAnimaitonEnd={() => {
+                setCardsOnDysplay((old) => {
+                  const newList = old.map(({ card }) => ({
+                    isAnimated: true,
+                    card,
+                  }));
+
+                  const newCard = cardList[newList.length - 1];
+                  newList.push({
+                    card: newCard,
+                    isAnimated: false,
+                  });
+
+                  return newList;
+                });
+              }}
+            />
+          </Fragment>
+        );
+      })}
     </div>
   );
 };
