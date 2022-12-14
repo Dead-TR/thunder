@@ -1,5 +1,12 @@
+import { Modal } from "components";
 import { useEffect, useRef } from "react";
-import { Stats, PermanentCards, RoundCards, Hand } from "TableComponents";
+import {
+  Stats,
+  PermanentCards,
+  RoundCards,
+  Hand,
+  ReadCard,
+} from "TableComponents";
 import css from "./style.module.scss";
 
 const margin = parseInt(css.marginTop);
@@ -31,23 +38,26 @@ export const Wrapper = () => {
   }, [elements.current.root, elements.current.stats]);
 
   return (
-    <div
-      className={css.appWrapper}
-      ref={(node) => (elements.current.root = node)}>
-      <RoundCards />
-      <PermanentCards />
+    <>
+      <ReadCard />
 
       <div
-        className={css.stats}
-        ref={(node) => (elements.current.stats = node)}>
-        <Stats />
-        <div className={css.statsLine} />
-        <Stats />
+        className={css.appWrapper}
+        ref={(node) => (elements.current.root = node)}>
+        <RoundCards />
+        <PermanentCards />
+
+        <div
+          className={css.stats}
+          ref={(node) => (elements.current.stats = node)}>
+          <Stats />
+          <div className={css.statsLine} />
+          <Stats />
+        </div>
+        <PermanentCards />
+        <RoundCards />
+        <Hand />
       </div>
-      <PermanentCards />
-      <RoundCards />
-      <Hand />
-    </div>
+    </>
   );
 };
-

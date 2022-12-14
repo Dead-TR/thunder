@@ -8,7 +8,7 @@ import reuse from "../assets/icons/reuse.png";
 import steal from "../assets/icons/steal.png";
 import { CardConfig } from "../types";
 
-export const cardList: Record<string, CardConfig> = {
+export const cardList = {
   attack_1: {
     icon: hit,
     type: "atack",
@@ -76,4 +76,7 @@ export const cardList: Record<string, CardConfig> = {
     name: "Вкрасти",
     description: "Забрати випадкову карту зі столу суперника собі в руку",
   },
-};
+} as const;
+
+
+

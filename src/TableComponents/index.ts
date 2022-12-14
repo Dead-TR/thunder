@@ -4,4 +4,4 @@ export * from "./PermanentCards";
 export * from "./RoundCards";
 export * from "./Stats";
 export * from "./CardRow";
-
+export * from "./ReadCard";

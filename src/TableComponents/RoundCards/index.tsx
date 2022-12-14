@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { CardRow } from "TableComponents";
 
 export const RoundCards = () => {
   return (
-    <div>RoundCards</div>
-  )
-}
+    <div>
+      <CardRow cardList={[]} />
+    </div>
+  );
+};

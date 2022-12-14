@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { CardRow } from "TableComponents";
 
 export const PermanentCards = () => {
   return (
-    <div>PermanentCards</div>
-  )
-}
+    <div>
+      <CardRow cardList={[]} />
+    </div>
+  );
+};

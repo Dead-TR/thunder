@@ -1,20 +1,23 @@
 import { FC, Fragment, useEffect, useState } from "react";
 
 import { useResizeObserver } from "general/hooks";
-import { Card } from "ItemComponents";
-import css from "./style.module.scss";
+import { Card, CardId } from "ItemComponents";
 import clsx from "clsx";
+import css from "./style.module.scss";
+import { useThunder } from "providers";
 
 interface Props {
-  cardList: string[];
+  cardList: CardId[];
 }
 
 export const CardRow: FC<Props> = ({ cardList }) => {
+  const { manager } = useThunder();
+
   const [cardsScale, setCardsScale] = useState(0);
   const [root, setRoot] = useState<HTMLDivElement | null>(null);
   const [cardsOnDysplay, setCardsOnDysplay] = useState<
     {
-      card: string;
+      card: CardId;
       isAnimated: boolean;
     }[]
   >(
@@ -27,12 +30,6 @@ export const CardRow: FC<Props> = ({ cardList }) => {
         ]
       : [],
   );
-
-  console.log("CardRow", cardsOnDysplay);
-
-  useEffect(() => {
-    return () => {};
-  }, []);
 
   useResizeObserver(
     ([{ target }]) => {
@@ -54,21 +51,11 @@ export const CardRow: FC<Props> = ({ cardList }) => {
 
   return (
     <div className={css.root} ref={(node) => setRoot(node)}>
-      {/* {cardList.map((value, i) => (
-        <Fragment key={`handCard#${value}_${i}`}>
-          <Card
-            configKey={value}
-            scale={{
-              height: cardsScale,
-            }}
-          />
-        </Fragment>
-      ))} */}
       {cardsOnDysplay.map(({ card, isAnimated }, index) => {
         return (
           <Fragment key={`handCard#${card}_${index}`}>
             <Card
-              configKey={card}
+              cardId={card}
               scale={{ height: cardsScale }}
               className={clsx(!isAnimated && css.slide)}
               onAnimaitonEnd={() => {
@@ -86,6 +73,9 @@ export const CardRow: FC<Props> = ({ cardList }) => {
 
                   return newList;
                 });
+              }}
+              rightClick={({ card }) => {
+                manager.readCard(card);
               }}
             />
           </Fragment>

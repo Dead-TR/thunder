@@ -7,17 +7,22 @@ import backgroundUrl from "./assets/front.png";
 import descriptionUrl from "./assets/textWrapper.png";
 import { typesIcon } from "./assets/types";
 import clsx from "clsx";
+import { CardConfig, CardId } from "./types";
+import { useThunder } from "providers";
 
 export * from "./config";
+export * from "./types";
 
 const cardHeight = parseInt(css.cardHeight);
 const cardWidth = parseInt(css.cardWidth);
 
 interface Props {
-  configKey: string;
+  cardId: CardId;
 
   className?: string;
   onAnimaitonEnd?: () => void;
+
+  rightClick?: (data: { card: CardId }) => void;
 
   scale?:
     | number
@@ -28,12 +33,13 @@ interface Props {
 }
 
 export const Card: FC<Props> = ({
-  configKey,
+  cardId,
   scale,
   className,
   onAnimaitonEnd,
+  rightClick,
 }) => {
-  const cardData = cardList[configKey];
+  const cardData = cardList[cardId] as CardConfig;
 
   if (!cardData) {
     return null;
@@ -61,7 +67,16 @@ export const Card: FC<Props> = ({
   };
 
   return (
-    <div className={clsx(css.scaleWrapper)} style={{ ...getStyle() }}>
+    <div
+      className={clsx(css.scaleWrapper)}
+      style={{ ...getStyle() }}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        rightClick &&
+          rightClick({
+            card: cardId,
+          });
+      }}>
       <div
         className={clsx(css.root, className)}
         onAnimationEnd={() => onAnimaitonEnd && onAnimaitonEnd()}>

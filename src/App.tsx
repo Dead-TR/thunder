@@ -1,9 +1,16 @@
 import { Wrapper } from "TableComponents";
 import { GameProvider } from "providers";
+import { CardId } from "ItemComponents";
+import { FC } from "react";
 
-export const App = () => {
+interface Props {
+  enemieCards: CardId[];
+  playerCards: CardId[];
+}
+
+export const Thunder: FC<Props> = ({ enemieCards, playerCards }) => {
   return (
-    <GameProvider>
+    <GameProvider enemieCards={enemieCards} playerCards={playerCards}>
       <Wrapper />
     </GameProvider>
   );
